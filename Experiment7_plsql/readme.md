@@ -34,6 +34,21 @@ END;
 - Use an `IF` statement to compare the values.
 - Display the greater number using `DBMS_OUTPUT.PUT_LINE`.
 
+### Program:
+```
+DECLARE
+    a NUMBER := 50;
+    b NUMBER := 80;
+BEGIN
+    IF a > b THEN
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || a);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Greater number is: ' || b);
+    END IF;
+END;
+/
+```
+
 **Expected Output:**  
 Greater number is: 80
 
@@ -47,6 +62,22 @@ Greater number is: 80
 - Use a `WHILE` loop to iterate from 1 to `n`, adding each number to the sum.
 - Display the result using `DBMS_OUTPUT.PUT_LINE`.
 
+### Program:
+```
+DECLARE
+    n NUMBER := 10;
+    i NUMBER := 1;
+    sum NUMBER := 0;
+BEGIN
+    WHILE i <= n LOOP
+        sum := sum + i;
+        i := i + 1;
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || sum);
+END;
+/
+```
 **Expected Output:**  
 Sum of first 10 natural numbers is: 55
 
@@ -60,6 +91,27 @@ Sum of first 10 natural numbers is: 55
 - Use a loop to generate the next terms using the formula `c = a + b`.
 - Print each term in the series.
 
+### Program:
+```
+DECLARE
+    n NUMBER := 7;
+    a NUMBER := 0;
+    b NUMBER := 1;
+    c NUMBER;
+    i NUMBER := 3;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Fibonacci sequence: ' || a || ', ' || b);
+
+    WHILE i <= n LOOP
+        c := a + b;
+        DBMS_OUTPUT.PUT_LINE(c);
+        a := b;
+        b := c;
+        i := i + 1;
+    END LOOP;
+END;
+/
+```
 **Expected Output:**  
 n = 7  
 Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
@@ -73,6 +125,23 @@ Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
 - Use a loop to extract each digit using modulo and reverse the number.
 - Display the reversed number.
 
+### Program:
+```
+DECLARE
+    n NUMBER := 1535;
+    rev NUMBER := 0;
+    rem NUMBER;
+BEGIN
+    WHILE n > 0 LOOP
+        rem := MOD(n, 10);
+        rev := rev * 10 + rem;
+        n := FLOOR(n / 10);
+    END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('Reversed number is: ' || rev);
+END;
+/
+```
 **Expected Output:**  
 n = 1535  
 Reversed number is 5351
@@ -86,6 +155,23 @@ Reversed number is 5351
 - Use nested `IF-ELSIF-ELSE` conditions to find the largest among the three.
 - Display the largest number.
 
+### Program:
+```
+DECLARE
+    a NUMBER := 10;
+    b NUMBER := 9;
+    c NUMBER := 15;
+BEGIN
+    IF a > b AND a > c THEN
+        DBMS_OUTPUT.PUT_LINE('Largest number is: ' || a);
+    ELSIF b > a AND b > c THEN
+        DBMS_OUTPUT.PUT_LINE('Largest number is: ' || b);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Largest number is: ' || c);
+    END IF;
+END;
+/
+```
 **Expected Output:**  
 a = 10, b = 9, c = 15  
 Largest of three number is 15
