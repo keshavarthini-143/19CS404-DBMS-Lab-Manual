@@ -38,123 +38,205 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+What is the total number of appointments scheduled by each doctor?
+Sample table:Appointments Table
 
 ```sql
--- Paste your SQL code below for Question 1
+select DoctorID , count(*) AS TotalAppointments
+from Appointments
+group by DoctorID
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="603" height="507" alt="image" src="https://github.com/user-attachments/assets/8d9961a7-dd14-489f-8df9-11b4fa2f265b" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+How many doctors specialize in each medical specialty?
+Sample table:Doctors Table
 
 ```sql
--- Paste your SQL code below for Question 2
+select specialty, count(*) AS TotalDocto
+from Doctors 
+group by specialty
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="638" height="582" alt="image" src="https://github.com/user-attachments/assets/aabd1086-d925-48a6-8f71-dde7a2db3dbb" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+How many medical records are there for each patient?
 
 ```sql
--- Paste your SQL code below for Question 3
+select patientID, count(*) AS TotalRecords
+from MedicalRecords
+group by patientID
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="534" height="534" alt="image" src="https://github.com/user-attachments/assets/6188d4a9-183a-4871-802e-66488c39d6d0" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+```
+Write a SQL query to Calculate the average email length (in characters) for people who lives in Mumbai city
+Table: customer
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT   
+city        TEXT
+email       TEXT
+phone       INTEGER
+```
 
 ```sql
--- Paste your SQL code below for Question 4
+select avg(length(email)) as avg_email_length_below_30
+from customer
+where city = 'Mumbai'
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="587" height="307" alt="image" src="https://github.com/user-attachments/assets/97564ecc-3cc7-438e-98a7-6e95754e33a7" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+```
+Write a SQL query to find the total amount of fruits with a unit type of 'LB'.
+Note: Inventory attribute contains amount of fruits
+Table: fruits
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+unit        TEXT
+inventory   INTEGER
+price       REAL
+ 
+```
 
 ```sql
--- Paste your SQL code below for Question 5
+select sum(inventory) as total
+from fruits
+where unit = 'LB'
+
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="430" height="316" alt="image" src="https://github.com/user-attachments/assets/12f229ee-2b6c-4363-998f-6ceec9190487" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+```
+Write a SQL query to find the minimum purchase amount.
+Sample table: orders
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
+```
 
 ```sql
--- Paste your SQL code below for Question 6
+select min(purch_amt) as MINIMUM
+from orders
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="375" height="311" alt="image" src="https://github.com/user-attachments/assets/f077f043-dd65-4c66-a7d5-49d8d15ae5a1" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+```
+Write a SQL query to calculate total purchase amount of all orders. Return total purchase amount.
+Sample table: orders
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+
+----------  ----------  ----------  -----------  -----------
+
+70001       150.5       2012-10-05  3005         5002
+
+70009       270.65      2012-09-10  3001         5005
+
+70002       65.26       2012-10-05  3002         5001
+
+```
 
 ```sql
--- Paste your SQL code below for Question 7
+select sum(purch_amt) as TOTAL
+from orders
+
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="293" height="318" alt="image" src="https://github.com/user-attachments/assets/3c499b99-a421-470e-a204-226cf130f5d7" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that achieves the grouping of data by age, calculates the minimum income for each age group, and includes only those age groups where the minimum income is less than 400,000.
+Sample table: employee
 
 ```sql
--- Paste your SQL code below for Question 8
+select age, min(income) AS 'MIN(income)'
+from employee
+group by age
+having min(income) < 400000
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="691" height="424" alt="image" src="https://github.com/user-attachments/assets/bc6e9298-461f-4365-9c7a-689d5cbd3c6d" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the average work hours for each date, and excludes dates where the average work hour is not less than 10.
+Sample table: employee1
 
 ```sql
--- Paste your SQL code below for Question 9
+select jdate,avg(workhour) as 'AVG(workhour)'
+from employee1
+group by jdate
+having avg(workhour) < 10
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="534" height="338" alt="image" src="https://github.com/user-attachments/assets/0c627839-a819-42c2-8e65-406e086ae1bf" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that achieves the grouping of data by city, calculates the total income for each city, and includes only those cities where the total income sum is greater than 200,000.
+Sample table: employee
 
 ```sql
--- Paste your SQL code below for Question 10
+select city, sum(income) as Income
+from employee
+group by city
+having sum(income) > 200000
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="479" height="469" alt="image" src="https://github.com/user-attachments/assets/889dc298-07c7-4cb7-9c3f-55346f1d986c" />
 
 
 ## RESULT
